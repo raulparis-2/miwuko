@@ -1,0 +1,6 @@
+import{useMemo}from'react';import{motion}from'framer-motion';
+type Props={text:string;fontWeight?:number;fontSize?:number;reveal?:'letter'|'word';dashLength?:number;dashGap?:number;specks?:number};
+export default function TechText({text,fontWeight=600,fontSize=120,reveal='letter',dashLength=4,dashGap=2,specks=15}:Props){
+const units=useMemo(()=>reveal==='word'?text.split(' '):[...text],[text,reveal]);
+return <div className="tech-text" aria-label={text} style={{fontWeight,fontSize:'clamp(52px,7.8vw,'+fontSize+'px)'}}>{units.map((unit,i)=><motion.span key={i} className="tech-text-unit" initial={{opacity:0,y:'110%',filter:'blur(8px)'}} animate={{opacity:1,y:0,filter:'blur(0)'}} transition={{duration:.68,delay:i*.035,ease:[.22,1,.36,1]}} whileHover={{y:-10,scale:1.06}}>{reveal==='word'&&i>0?' ':''}{unit===' '?'\u00a0':unit}{i===units.length-1&&<i className="tech-text-dash" style={{backgroundImage:'repeating-linear-gradient(90deg,currentColor 0 '+dashLength+'px,transparent '+dashLength+'px '+(dashLength+dashGap)+'px)'}}/>}</motion.span>)}{Array.from({length:specks}).map((_,i)=><span key={'s'+i} className="tech-text-speck" style={{left:((i*37)%97)+'%',top:((i*53)%88)+'%'}}/>)}</div>;
+}
