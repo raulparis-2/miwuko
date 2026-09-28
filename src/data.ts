@@ -1,0 +1,12 @@
+export type Product={id:string;name:string;category:string;price:string;rating:number;tag:string;image:string;description:string;pros:string[];affiliateUrl:string};
+export const products:Product[]=[
+{id:'p1',name:'Arnés AirFit Pro',category:'Paseo',price:'29,99 €',rating:4.8,tag:'Más recomendado',image:'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85',description:'Ajuste cómodo y seguro para paseos diarios.',pros:['Ajuste regulable','Material transpirable','Fácil de poner'],affiliateUrl:'#'},
+{id:'p2',name:'Fuente FreshFlow',category:'Hidratación',price:'34,90 €',rating:4.7,tag:'Para beber más',image:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=85',description:'Fuente silenciosa pensada para estimular la hidratación.',pros:['Filtro incluido','Bajo ruido','Limpieza sencilla'],affiliateUrl:'#'},
+{id:'p3',name:'Cama CloudNest',category:'Descanso',price:'42,95 €',rating:4.9,tag:'Favorito',image:'https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=900&q=85',description:'Cama mullida para convertir cualquier rincón en refugio.',pros:['Muy acolchada','Funda lavable','Base antideslizante'],affiliateUrl:'#'},
+{id:'p4',name:'Comedero SlowBowl',category:'Alimentación',price:'19,90 €',rating:4.6,tag:'Problema → solución',image:'https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=900&q=85',description:'Diseñado para hacer más pausada la hora de comer.',pros:['Antideslizante','Fácil de lavar','Diseño slow'],affiliateUrl:'#'}
+];
+export const posts=[
+{title:'Cómo elegir el arnés perfecto para tu perro',category:'Guía de compra',time:'6 min',image:'https://images.unsplash.com/photo-1558929996-da64ba858215?auto=format&fit=crop&w=1000&q=85'},
+{title:'7 cosas que tu mascota necesita y quizá no tengas',category:'Checklist',time:'5 min',image:'https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=1000&q=85'},
+{title:'¿Fuente de agua o cuenco? Lo que debes mirar',category:'Comparativa',time:'4 min',image:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=85'}
+];
