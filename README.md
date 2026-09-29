@@ -28,3 +28,5 @@ Los ejemplos usan `#`. Sustitúyelos por tus enlaces reales.
 
 ## Vercel
 Sube la carpeta a GitHub e impórtala en Vercel. Vercel detecta Vite automáticamente.
+
+Los cambios enviados a `main` deben generar un nuevo deployment cuando el repositorio esté conectado al proyecto de Vercel.
