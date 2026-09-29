@@ -103,3 +103,33 @@
  .folder-float-cloud::-webkit-scrollbar{display:none}
  .folder-float-pill{flex:0 0 156px;min-height:118px;scroll-snap-align:start}
 }
+
+/* Cinematic intro + conversion-focused discovery */
+.intro-splash{position:fixed;inset:0;z-index:300;background:#11140f;color:#f5f1e6;display:grid;place-items:center;overflow:hidden}
+.intro-splash::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#71805d2b,transparent 28%),radial-gradient(circle at 15% 85%,#dfe6d610,transparent 30%),#11140f}
+.intro-grain{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.intro-content{position:relative;z-index:2;text-align:center;display:flex;align-items:center;flex-direction:column}
+.intro-kicker{font-size:9px;letter-spacing:4px;color:#9da69a;display:flex;gap:10px;align-items:center}
+.intro-kicker i{width:5px;height:5px;background:#cfd8c5;border-radius:50%;box-shadow:0 0 20px #cfd8c5}
+.intro-word{font-size:clamp(76px,15vw,190px);line-height:.78;letter-spacing:-11px;font-weight:800;margin:35px 0 32px}
+.intro-word em{font-family:'Instrument Serif',serif;font-weight:400;color:#aeb99f;letter-spacing:-8px}
+.intro-content p{font-size:13px;line-height:1.8;color:#92998e;margin:0 0 30px}.intro-content p strong{color:#f5f1e6;font-weight:400}
+.intro-enter{border:1px solid #9ca99166;background:#f5f1e6;color:#151712;border-radius:100px;padding:14px 18px 14px 21px;display:flex;align-items:center;gap:25px;cursor:pointer;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;box-shadow:0 15px 55px #0008;transition:transform .3s,box-shadow .3s}
+.intro-enter:hover{transform:translateY(-3px);box-shadow:0 22px 70px #71805d44}.intro-content>small{margin-top:22px;font-size:7px;letter-spacing:2px;color:#697066}
+.intro-skip{position:absolute;z-index:3;right:4vw;bottom:4vh;border:0;background:none;color:#8b9287;font-size:8px;letter-spacing:1.4px;cursor:pointer;display:flex;gap:7px;align-items:center}
+.intro-orbit{position:absolute;border:1px solid #71805d20;border-radius:50%;pointer-events:none}.intro-orbit-a{width:min(70vw,900px);height:min(70vw,900px);animation:introSpin 24s linear infinite}.intro-orbit-b{width:min(44vw,560px);height:min(44vw,560px);border-color:#dfe6d612;animation:introSpin 17s linear infinite reverse;transform:rotate(28deg)}
+@keyframes introSpin{to{transform:rotate(360deg)}} 
+.audience-filter{margin:30px 0 15px;padding:8px;border:1px solid #d7d5c9;background:#eeeadf;border-radius:18px;display:flex;align-items:center;gap:7px;width:max-content;max-width:100%}
+.audience-filter>span{font-size:7px;letter-spacing:1.5px;color:#85887f;padding:0 12px 0 8px}
+.audience-filter button{border:0;background:transparent;color:#676b63;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:7px;font-size:9px;cursor:pointer;transition:.3s}
+.audience-filter button:hover{background:#faf8f2;color:#263026}.audience-filter button.active{background:#71805d;color:#fff;box-shadow:0 8px 22px #71805d2c}
+.results-meta{display:flex;justify-content:space-between;align-items:center;margin:0 0 15px;color:#8a8d84;font-size:8px;text-transform:uppercase;letter-spacing:1px}.results-meta b{color:#263026}.results-meta span:last-child{opacity:.65}
+.product-grid .product{transition:box-shadow .35s,transform .45s}.product:hover{box-shadow:0 30px 70px #26302620}
+.product-foot a{position:relative;font-weight:700}.product-foot a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#71805d;transform:scaleX(.25);transform-origin:left;transition:transform .3s}.product-foot a:hover::after{transform:scaleX(1)}
+@media(max-width:700px){
+ .intro-word{letter-spacing:-6px;font-size:clamp(62px,19vw,95px)}.intro-word em{letter-spacing:-5px}.intro-content p{font-size:11px;padding:0 25px}
+ .intro-enter{padding:14px 16px 14px 19px}.intro-skip{right:20px;bottom:20px}
+ .audience-filter{width:100%;border-radius:16px;overflow:auto;scrollbar-width:none}.audience-filter::-webkit-scrollbar{display:none}.audience-filter>span{white-space:nowrap}.audience-filter button{flex:0 0 auto}
+ .results-meta span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){.intro-orbit{animation:none}}
