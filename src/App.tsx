@@ -31,8 +31,10 @@ function IntroSplash({onEnter}:{onEnter:()=>void}){return <motion.div className=
  </motion.div>}
 function TechHeroText(){return <TechText text="MIWUKO" fontWeight={700} fontSize={150} reveal="letter" dashLength={5} dashGap={3} specks={18} accentColor="#71805d"/>}
 function GuideFolder({onOpen}:{onOpen:(p:(typeof posts)[number])=>void}){
- const guideItems=posts.map(p=>({name:p.title,sub:p.category+' · '+p.time,value:p.title}));
- return <FolderFloat items={guideItems} label="Biblioteca de guías" sublabel={posts.length+' guías para decidir mejor'} trigger="click" closeOnSelect physics onSelect={value=>{const p=posts.find(x=>x.title===value);if(p)onOpen(p)}}/>;
+ return <div className="guide-wall">{posts.map((p,i)=><button type="button" className={'guide-tile '+(i===0?'featured':'')} key={p.title} onClick={()=>onOpen(p)}>
+  <img src={p.image} alt="" loading="lazy"/><div className="guide-overlay"/><span className="guide-index">0{i+1}</span>
+  <div className="guide-meta"><span>{p.category} · {p.time}</span><b>{p.title}</b><strong>Leer guía <ArrowRight size={13}/></strong></div>
+ </button>)}</div>;
 }
 
 export default function App(){const[items,setItems]=useState<Product[]>(fallback),[category,setCategory]=useState('Todos'),[species,setSpecies]=useState<'todos'|'perro'|'gato'>('todos'),[intro,setIntro]=useState(true),[compare,setCompare]=useState<Product[]>([]),[search,setSearch]=useState(''),[menu,setMenu]=useState(false),[mouse,setMouse]=useState({x:0,y:0}),[guide,setGuide]=useState<(typeof posts)[number]|null>(null);useEffect(()=>{loadProducts().then(setItems);const timer=window.setTimeout(()=>setIntro(false),3200);const f=(e:MouseEvent)=>setMouse({x:e.clientX, y:e.clientY});window.addEventListener('mousemove',f,{passive:true});return()=>window.removeEventListener('mousemove',f)},[]);const cats=['Todos',...Array.from(new Set(items.map(p=>p.category)))];const visible=useMemo(()=>items.filter(p=>(category==='Todos'||p.category===category)&&(species==='todos'||p.species===species||p.species==='ambos')&&p.name.toLowerCase().includes(search.toLowerCase())),[items,category,species,search]);const toggle=(p:Product)=>setCompare(c=>c.some(x=>x.id===p.id)?c.filter(x=>x.id!==p.id):c.length<3?[...c,p]:c);
