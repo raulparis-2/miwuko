@@ -18,16 +18,20 @@ const categoryInfo=[
  {name:'Juguetes',sub:'Juego y estimulación',value:'Juguetes'}
 ];
 function CategoryButtons({active,onSelect}:{active:string;onSelect:(x:string)=>void}){return <FolderFloat items={categoryInfo} label="Explorar categorías" sublabel="7 formas de encontrar lo que necesitas" trigger="click" closeOnSelect physics active={active} onSelect={onSelect}/>}
-function IntroSplash({onEnter}:{onEnter:()=>void}){return <motion.div className="intro-splash" initial={{opacity:1}} exit={{opacity:0}} transition={{duration:.7}}>
- <div className="intro-grain"/><div className="intro-orbit intro-orbit-a"/><div className="intro-orbit intro-orbit-b"/>
- <motion.div className="intro-content" initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:.9,ease:[.22,1,.36,1]}}>
-  <span className="intro-kicker"><i/> MIWUKO / 2026</span>
-  <div className="intro-word"><span>MI</span><em>WUKO</em></div>
-  <p>No necesitas mirar cien productos.<br/><strong>Necesitas encontrar el que tiene sentido.</strong></p>
-  <button className="intro-enter" onClick={onEnter}><span>Entrar en Miwuko</span><ArrowRight size={17}/></button>
-  <small>RECOMENDACIONES · GUÍAS · COMPARATIVAS</small>
+function IntroSplash({onEnter}:{onEnter:()=>void}){return <motion.div className="intro-splash" initial={{opacity:1}} exit={{opacity:0,scale:1.03}} transition={{duration:.8,ease:[.22,1,.36,1]}}>
+ <div className="intro-grain"/><div className="intro-vignette"/><div className="intro-orbit intro-orbit-a"/><div className="intro-orbit intro-orbit-b"/><div className="intro-orbit intro-orbit-c"/>
+ <div className="intro-pulse"/><div className="intro-particles" aria-hidden="true"><i/><i/><i/><i/><i/><i/><i/><i/></div>
+ <motion.div className="intro-content" initial={{opacity:0}} animate={{opacity:1}} transition={{duration:.35}}>
+  <motion.span className="intro-kicker" initial={{opacity:0,y:12,letterSpacing:0}} animate={{opacity:1,y:0,letterSpacing:'4px'}} transition={{delay:.25,duration:.8}}><i/> MIWUKO / 2026</motion.span>
+  <div className="intro-word" aria-label="Miwuko"><span>MI</span><em>WUKO</em><b className="intro-word-sweep"/></div>
+  <motion.div className="intro-rule" initial={{scaleX:0}} animate={{scaleX:1}} transition={{delay:.75,duration:1.1,ease:[.16,1,.3,1]}}/>
+  <motion.p initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:1.05,duration:.8}}>No necesitas mirar cien productos.<br/><strong>Necesitas encontrar el que tiene sentido.</strong></motion.p>
+  <motion.button className="intro-enter" onClick={onEnter} initial={{opacity:0,y:15,scale:.96}} animate={{opacity:1,y:0,scale:1}} transition={{delay:1.35,duration:.7,ease:[.16,1,.3,1]}}><span>Entrar en Miwuko</span><ArrowRight size={17}/><i/></motion.button>
+  <motion.small initial={{opacity:0}} animate={{opacity:1}} transition={{delay:1.7}}>RECOMENDACIONES · GUÍAS · COMPARATIVAS</motion.small>
  </motion.div>
+ <div className="intro-corner intro-corner-tl">01 / 07</div><div className="intro-corner intro-corner-br">CURATED FOR PET PEOPLE</div>
  <button className="intro-skip" onClick={onEnter}>SALTAR INTRO <ArrowRight size={12}/></button>
+ <div className="intro-progress"><span/></div>
  </motion.div>}
 function TechHeroText(){return <TechText text="MIWUKO" fontWeight={700} fontSize={150} reveal="letter" dashLength={5} dashGap={3} specks={18} accentColor="#71805d"/>}
 function GuideFolder({onOpen}:{onOpen:(p:(typeof posts)[number])=>void}){
@@ -37,7 +41,7 @@ function GuideFolder({onOpen}:{onOpen:(p:(typeof posts)[number])=>void}){
  </button>)}</div>;
 }
 
-export default function App(){const[items,setItems]=useState<Product[]>(fallback),[category,setCategory]=useState('Todos'),[species,setSpecies]=useState<'todos'|'perro'|'gato'>('todos'),[intro,setIntro]=useState(true),[compare,setCompare]=useState<Product[]>([]),[search,setSearch]=useState(''),[menu,setMenu]=useState(false),[mouse,setMouse]=useState({x:0,y:0}),[guide,setGuide]=useState<(typeof posts)[number]|null>(null);useEffect(()=>{loadProducts().then(setItems);const timer=window.setTimeout(()=>setIntro(false),3200);const f=(e:MouseEvent)=>setMouse({x:e.clientX, y:e.clientY});window.addEventListener('mousemove',f,{passive:true});return()=>window.removeEventListener('mousemove',f)},[]);const cats=['Todos',...Array.from(new Set(items.map(p=>p.category)))];const visible=useMemo(()=>items.filter(p=>(category==='Todos'||p.category===category)&&(species==='todos'||p.species===species||p.species==='ambos')&&p.name.toLowerCase().includes(search.toLowerCase())),[items,category,species,search]);const toggle=(p:Product)=>setCompare(c=>c.some(x=>x.id===p.id)?c.filter(x=>x.id!==p.id):c.length<3?[...c,p]:c);
+export default function App(){const[items,setItems]=useState<Product[]>(fallback),[category,setCategory]=useState('Todos'),[species,setSpecies]=useState<'todos'|'perro'|'gato'>('todos'),[intro,setIntro]=useState(true),[compare,setCompare]=useState<Product[]>([]),[search,setSearch]=useState(''),[menu,setMenu]=useState(false),[mouse,setMouse]=useState({x:0,y:0}),[guide,setGuide]=useState<(typeof posts)[number]|null>(null);useEffect(()=>{loadProducts().then(setItems);const timer=window.setTimeout(()=>setIntro(false),4200);const f=(e:MouseEvent)=>setMouse({x:e.clientX, y:e.clientY});window.addEventListener('mousemove',f,{passive:true});return()=>{window.clearTimeout(timer);window.removeEventListener('mousemove',f,{passive:true})}},[]);const cats=['Todos',...Array.from(new Set(items.map(p=>p.category)))];const visible=useMemo(()=>items.filter(p=>(category==='Todos'||p.category===category)&&(species==='todos'||p.species===species||p.species==='ambos')&&p.name.toLowerCase().includes(search.toLowerCase())),[items,category,species,search]);const toggle=(p:Product)=>setCompare(c=>c.some(x=>x.id===p.id)?c.filter(x=>x.id!==p.id):c.length<3?[...c,p]:c);
 
 return <div className="app"><AnimatePresence>{intro&&<IntroSplash onEnter={()=>setIntro(false)}/>}</AnimatePresence><ScrollProgress/><div className="cursor-glow" style={{left:mouse.x,top:mouse.y}}/><div className="noise"/><header className="nav"><a className="logo" href="#"><span className="logo-mark">M</span>miwuko</a><nav className={menu?'open':''}><a href="#productos">Productos</a><a href="#metodo">Método</a><a href="#comparador">Comparador</a><a href="#guias">Guías</a></nav><Magnetic className="nav-cta"><a href="#productos">Explorar <ArrowRight size={14}/></a></Magnetic><button className="menu" onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></header>
 
@@ -56,8 +60,6 @@ return <div className="app"><AnimatePresence>{intro&&<IntroSplash onEnter={()=>s
 <section id="comparador" className="compare-section"><div className="section-head"><Reveal><span className="kicker">05 — Herramienta</span><h2>Compara antes<br/><em>de decidir.</em></h2></Reveal><Reveal><p>Añade hasta tres productos y mira sus diferencias de un vistazo.</p></Reveal></div>{compare.length===0?<div className="empty"><div className="empty-ring"><Scale size={24}/></div><b>Aún no has añadido productos.</b><span>Pulsa «Comparar» en cualquiera de las tarjetas.</span><a href="#productos">Elegir productos <ArrowRight size={14}/></a></div>:<div className="compare-table"><div className="compare-row labels"><span>PRODUCTO</span>{compare.map(p=><b key={p.id}>{p.name}</b>)}</div><div className="compare-row"><span>PRECIO</span>{compare.map(p=><b key={p.id}>{p.price}</b>)}</div><div className="compare-row"><span>VALORACIÓN</span>{compare.map(p=><span key={p.id}>★ {p.rating}/5</span>)}</div><div className="compare-row"><span>DESTACA POR</span>{compare.map(p=><span key={p.id}>{p.pros[0]}</span>)}</div><div className="compare-row"><span>ENLACE</span>{compare.map(p=><a key={p.id} href={p.affiliateUrl}>Ver producto <ArrowRight size={14}/></a>)}</div></div>}</section>
 
 <section id="guias" className="section guides"><div className="section-head"><Reveal><span className="kicker">06 — Guías para decidir</span><h2>Antes de comprar,<br/><em>entiende qué necesitas.</em></h2></Reveal><span className="guide-hint">Explora la biblioteca y abre una guía <ArrowRight size={14}/></span></div><GuideFolder onOpen={setGuide}/></section>
-
-<section className="bento"><Reveal><div className="bento-intro"><span className="kicker">Miwuko / manifesto</span><h2>Menos pestañas.<br/><em>Más confianza.</em></h2><p>Estamos construyendo una biblioteca de decisiones útiles para quienes conviven con mascotas y no quieren comprar a ciegas.</p></div></Reveal><Reveal delay={.1}><div className="bento-card quote"><span>“</span><p>Lo importante no es encontrar <em>más</em> productos. Es encontrar el que tiene sentido para ti.</p><small>— MIWUKO</small></div></Reveal><Reveal delay={.2}><div className="bento-card stat"><span>SELECCIÓN</span><strong>24<span>+</span></strong><small>productos que iremos incorporando</small></div></Reveal><Reveal delay={.3}><div className="bento-card dark"><Sparkles/><b>Una forma más tranquila de comprar.</b><span>Sin listas interminables.</span></div></Reveal></section>
 
 <section className="final-cta"><div className="cta-grid"/><span className="kicker">07 — Empieza por aquí</span><h2>Encuentra algo<br/><em>que les haga bien.</em></h2><Magnetic><a className="btn primary big" href="#productos">Ver selección <ArrowRight size={17}/></a></Magnetic></section></main>
 
