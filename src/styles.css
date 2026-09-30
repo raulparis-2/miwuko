@@ -251,3 +251,40 @@
 /* Rating contrast */
 .rating{color:#596b4f;font-weight:700}
 .rating svg{color:#596b4f;filter:drop-shadow(0 1px 2px #596b4f22)}
+
+
+/* Editorial guide article */
+.guide-modal{max-height:min(88vh,920px);overflow:auto;display:block}
+.guide-article-hero{position:relative;height:300px;overflow:hidden}
+.guide-article-hero img{width:100%;height:100%;object-fit:cover}
+.guide-article-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#11140f08 20%,#11140fe8 100%)}
+.guide-article-hero-copy{position:absolute;z-index:2;left:32px;right:32px;bottom:26px;color:#fff}
+.guide-article-hero-copy span{font-size:8px;text-transform:uppercase;letter-spacing:2px;color:#cbd3c4}
+.guide-article-hero-copy h3{font-size:clamp(28px,4vw,46px);line-height:.98;letter-spacing:-1.8px;margin:10px 0 0;max-width:800px}
+.guide-article{padding:30px 34px 36px;background:#f7f3e9;color:#263026}
+.guide-article-intro{font-family:'Instrument Serif',serif;font-size:24px;line-height:1.25;color:#46503f;max-width:760px;margin:0 0 34px}
+.guide-article>section{position:relative;border-top:1px solid #d8d6ca;padding:26px 0 8px}
+.guide-section-number{font-size:7px;letter-spacing:2px;color:#71805d;font-weight:800}
+.guide-article h4{font-size:21px;line-height:1.1;margin:7px 0 9px;letter-spacing:-.5px}
+.guide-article section p{font-size:12px;line-height:1.8;color:#62685f;max-width:760px;margin:0}
+.guide-article ul{padding-left:18px;margin:14px 0 0;display:grid;gap:7px}
+.guide-article li{font-size:11px;line-height:1.55;color:#4e554c}
+.guide-takeaways{margin:28px 0;padding:20px 22px;border-radius:18px;background:#e8ede1;border:1px solid #d2d9ca}
+.guide-takeaways>span{font-size:7px;letter-spacing:2px;font-weight:800;color:#71805d}
+.guide-takeaways ul{margin:10px 0 0;padding-left:18px}
+.guide-takeaways li{font-weight:700;color:#3e4739}
+.guide-article .modal-action{margin-top:18px}
+.rating{color:#596b4f!important;font-weight:800}
+.rating svg{color:#596b4f!important;filter:drop-shadow(0 1px 2px #596b4f22)}
+@media(max-width:700px){
+ .guide-modal{width:calc(100vw - 20px);max-height:90vh;border-radius:22px}
+ .guide-article-hero{height:245px}
+ .guide-article-hero-copy{left:20px;right:20px;bottom:20px}
+ .guide-article-hero-copy h3{font-size:28px}
+ .guide-article{padding:24px 20px 28px}
+ .guide-article-intro{font-size:21px;margin-bottom:24px}
+ .guide-article>section{padding-top:20px}
+ .guide-article h4{font-size:18px}
+ .guide-article section p{font-size:11px;line-height:1.75}
+ .guide-article li{font-size:10px}
+}
