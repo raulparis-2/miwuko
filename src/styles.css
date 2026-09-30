@@ -247,3 +247,7 @@
 @media(prefers-reduced-motion:reduce){
  .intro-pulse,.intro-particles i,.intro-word-sweep,.intro-enter i{animation:none!important}
 }
+
+/* Rating contrast */
+.rating{color:#596b4f;font-weight:700}
+.rating svg{color:#596b4f;filter:drop-shadow(0 1px 2px #596b4f22)}
