@@ -320,7 +320,7 @@
 @media(max-width:700px){.hero-proof{justify-content:center;margin-top:20px;font-size:8px}.hero-card{border-radius:150px 150px 22px 22px}.hero{background:linear-gradient(160deg,#f7f4eb,#eeece2)}}
 
 /* Floating Miwuko AI assistant */
-.miwuko-ai{position:fixed;z-index:90;right:24px;bottom:24px;font-family:inherit}
+.miwuko-ai{position:fixed;z-index:9999;right:24px;bottom:24px;font-family:inherit;isolation:isolate;visibility:visible;opacity:1}
 .ai-launch{display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:13px 18px;background:#293326;color:#f7f4eb;box-shadow:0 12px 38px #17201440;font-size:11px;letter-spacing:.3px;cursor:pointer;transition:transform .2s,box-shadow .2s}
 .ai-launch:hover{transform:translateY(-2px);box-shadow:0 16px 44px #17201455}.ai-launch-mark{font-size:21px;line-height:1;color:#d8dfc9}
 .ai-panel{position:absolute;right:0;bottom:62px;width:min(390px,calc(100vw - 32px));height:min(570px,calc(100vh - 115px));display:flex;flex-direction:column;overflow:hidden;border:1px solid #d9d9cb;border-radius:20px;background:#f8f7f0;color:#293126;box-shadow:0 24px 80px #17201435}
