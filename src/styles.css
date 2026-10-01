@@ -303,3 +303,18 @@
 
 /* Improve contrast for the hero rating */
 .floating-stat>span{color:#f5f1e6!important;text-shadow:0 1px 10px #f5f1e633}
+
+
+/* Hero refresh: clearer hierarchy and richer first impression */
+.hero{isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 78% 42%,#71805d18 0%,transparent 42%),linear-gradient(135deg,#f7f4eb 0%,#eeece2 100%)}
+.hero-grid{opacity:.55;background-size:64px 64px;mask-image:radial-gradient(ellipse at 55% 45%,#000 0%,transparent 78%)}
+.hero-copy{padding:clamp(8px,2vw,28px) 0}
+.hero-copy .eyebrow{color:#697461;font-weight:700}
+.hero-proof{display:flex;align-items:center;gap:13px;margin-top:22px;color:#687260;font-size:9px;letter-spacing:.4px}
+.hero-proof span{display:flex;align-items:center;gap:7px}.hero-proof svg{color:#71805d}.hero-proof i{width:3px;height:3px;border-radius:50%;background:#a6ad9b}
+.hero-visual{filter:drop-shadow(0 28px 55px #26302618)}
+.hero-card{border-radius:220px 220px 28px 28px;box-shadow:0 35px 95px #26302635,0 0 0 10px #ffffff75;border-color:#ffffffa8}
+.hero-card-index{display:grid;place-items:center;width:43px;height:43px;border:1px solid #ffffff55;border-radius:50%;background:#11140f55;backdrop-filter:blur(10px)}
+.floating-stat{background:#263026;color:#f5f1e6;border:1px solid #ffffff2b;box-shadow:0 18px 45px #26302635;backdrop-filter:blur(14px)}
+.floating-stat b{color:#f5f1e6}.floating-stat small{color:#c3c9bd}
+@media(max-width:700px){.hero-proof{justify-content:center;margin-top:20px;font-size:8px}.hero-card{border-radius:150px 150px 22px 22px}.hero{background:linear-gradient(160deg,#f7f4eb,#eeece2)}}
