@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://miwuko-mokj.vercel.app/sitemap.xml
+Sitemap: https://miwuko.vercel.app/sitemap.xml
