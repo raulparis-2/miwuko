@@ -374,5 +374,5 @@
 }
 
 /* Hero video framing: less crop and shifted left */
-.hero-dog-video{width:100%;height:100%;object-fit:contain;object-position:40% center;transform:translateX(-17%) scale(.88);transform-origin:center center;background:#151611;}
-@media(max-width:700px){.hero-dog-video{transform:translateX(-13%) scale(.91);object-position:40% center;}}
+.hero-dog-video{width:100%;height:100%;object-fit:contain;object-position:40% center;transform:translateX(-10%) scale(.93);transform-origin:center center;background:#151611;}
+@media(max-width:700px){.hero-dog-video{transform:translateX(-7%) scale(.95);object-position:40% center;}}
